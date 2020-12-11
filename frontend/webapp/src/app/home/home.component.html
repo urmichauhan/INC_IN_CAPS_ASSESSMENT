@@ -1,0 +1,111 @@
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">Count Prime Number</h5>
+        <div class="card-body">
+            <h5 class="card-title">Q1. Find number is prime or not (Easy level)</h5>
+            <p class="card-text">
+                1. Prime number is number which divisible by itself or 1. <br />
+                2. In this you have two sections one is input section where you take
+                input in textarea where user can enter as many as numbers in
+                comma separated format.<br />
+                3. Second sections is output section where you will display result of
+                all input numbers given.<br />
+                4. For example
+                Input is 10,5,7,8,15555<br />
+                Then output result must be in following format<br />
+                10 is not prime number<br />
+                5 is prime number<br />
+                7 is prime number<br />
+                8 is not prime number<br />
+                15555 is not prime number.<br />
+                5. Logic of prime number finding must be optimized logic
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h5 class="card-header">Student Registration Form</h5>
+        <div class="card-body">
+            <h5 class="card-title">Q2. Student Registration form (Medium level)</h5>
+            <p class="card-text">
+                Create mongo dB collection name student_info , images folder in server
+                and do following tasks:<br />
+                1. Working of form<br />
+                a. On form load fetch all records from database using apis.
+                Show all records in Database table.<br />
+                b. Submit: on click of submit needs to check that details are
+                filled properly. If yes you need to save data in student_info
+                collection in single json object and file needs to be uploaded
+                in images folder. Before saving please check given student id
+                is already exists if yes then update a record otherwise add
+                new record.<br />
+                c. Reset: on click of reset needs to clear all record from Enter
+                details section.<br />
+                d. Edit: onclick of edit button you need to check that any row is
+                selected or not If yes then set selected record to respective
+                textbox and fetch image from server and show it on image
+                box.<br />
+                e. Delete: onclick of delete button you need to check that any
+                row is selected or not if yes then delete record from server by
+                sending request to database.<br />
+                f. After every event you needs to refresh database table.<br />
+                g. Fetching records using pagination is considered as extra
+                advantage.<br />
+                h. Attractive form design and extra features considered as extra
+                advantage.<br />
+                i. Save data on local as well as server and sync both according
+                to connectivity of internet.<br />
+                Note:<br />
+                1. All server response must be in json format<br />
+                2. Server-side code needs to be done in NodeJS and database is
+                mongo dB only<br />
+                3. For front end you can use angular.js, react.js or vue.js
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h5 class="card-header">Sudoku</h5>
+        <div class="card-body">
+            <h5 class="card-title">Q3. Sudoku game (Hard level)</h5>
+            <p class="card-text">
+                The classic Sudoku game involves a grid of 81 squares. The grid is
+                divided into nine blocks, each containing nine squares.<br />
+                The rules of the game are simple: each of the nine blocks has to contain
+                all the numbers 1-9 within its squares. Each number can only appear
+                once in a row, column or box.<br />
+                The difficulty lies in that each vertical nine-square column, or horizontal
+                nine-square line across, within the larger square, must also contain the
+                numbers 1-9, without repetition or omission.<br />
+                Every puzzle has just one correct solution.<br />
+                Difficulty levels are: Easy, Medium, Hard Expert.<br />
+                Working<br />
+                1. This game has 9 box which consists of 3*3 box inside.<br />
+                2. Initially all boxes are empty.<br />
+                3. When user clicks on new game button random numbers need to be
+                generated as per difficulty level selection and need to fill in box as
+                game rule defined after filling form disable those boxes which is
+                already filled by computer.<br />
+                4. User clicks on single button select number by clicking on number
+                or entering number using keyboard.<br />
+                5. Program needs to check that number is placed correctly as per
+                game rules. If not, you need to change font color to red for that
+                number.<br />
+                6. By clicking on erase button user will erase selected box value.<br />
+                7. By clicking on hint button user will show value of current box it is
+                considered as advantage.<br />
+                8. By clicking undo move user will move back to previous state.<br />
+                9. Game continue until user closes application or completes game. If
+                your completes game show following screen on board<br />
+                10.After successfully completion of game save data to database by
+                asking user its name and email id.<br />
+                11.Create model for leaderboard and display leaderboard according
+                following steps.<br />
+                12.On click of leaderboard button show result according to time taken
+                by user to complete and difficulty level sudoku. If user select
+                difficulty level as easy leaderboard display records only easy level
+                difficulty users.
+            </p>
+        </div>
+    </div>
+</div>

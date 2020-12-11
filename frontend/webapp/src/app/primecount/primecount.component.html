@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">Count Prime Number</h5>
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Enter numbers in comma seprated</label>
+                <textarea [(ngModel)]="numbers" name="numberdata" #numberdata="ngModel" class="form-control"
+                    id="exampleFormControlTextarea1" rows="3" pattern="[0-9,]+"></textarea>
+                <span class="alert-danger"
+                    *ngIf="(numberdata.invalid || !numbers || numbers.indexOf(',,') > -1) && submitted">Please enter
+                    numbers with valid format</span>
+            </div>
+            <button type="button" class="btn btn-dark" (click)="calculatePrimeNumber(numberdata)">Calculate</button>
+            <button type="button" class="btn btn-secondary" (click)="results=[];numbers='';">Cancel</button>
+        </div>
+    </div>
+
+    <div class="scrollbar scrollbar-primary" *ngIf="results.length > 0">
+        <div class="force-overflow">
+            <div class="alert alert-secondary overflow-auto " role="alert">
+                <ul class="list-group ">
+                    <li class="list-group-item list-group-item-secondary" *ngFor="let isPrime of results">
+                        {{isPrime}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <button (click)="showNote=!showNote" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover">
+        Note
+    </button>
+    <p style="background-color: azure;border-radius: 7px;font-size: 0.9rem;" *ngIf="showNote">In case if you enter duplicate numbers to find a that number is prime or not,It will always returns results of unique values as your entered same numbers will gives you the same result.</p>
+</div>

@@ -1,0 +1,145 @@
+<div class="container">
+  <div class="card text-white bg-secondary mb-3">
+    <div class="card-body">
+      <div *ngIf="alertText.text" class="alert {{alertText.class}}" role="alert">
+        {{alertText.text}}
+      </div>
+      <form [formGroup]="student">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Student's Name</label>
+            <input formControlName="studentName" type="text" class="form-control">
+            <span class="control-alert" *ngIf="(student.controls.studentName.touched || submitted)  && student.controls.studentName.errors.required">
+              This Field is Required.
+            </span>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Father's Name</label>
+            <input type="text" formControlName="fatherName" class="form-control" id="inputPassword4">
+            <span class="control-alert" *ngIf="(student.controls.fatherName.touched || submitted)  && student.controls.fatherName.errors.required">
+              This Field is Required.
+            </span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputAddress">Address</label>
+            <textarea class="form-control" formControlName="address" rows="3"></textarea>
+            <span class="control-alert" *ngIf="(student.controls.address.touched || submitted)  && student.controls.address.errors.required">
+              This Field is Required.
+            </span>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Gender</label><br />
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" formControlName="gender" type="radio" id="inlineRadio1" value="Female">
+              <label class="form-check-label" for="inlineRadio1">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" formControlName="gender" type="radio" id="inlineRadio2" value="Male">
+              <label class="form-check-label" for="inlineRadio2">Male</label>
+            </div>
+          </div>
+          <span class="control-alert" *ngIf="(student.controls.gender.touched || submitted)  && student.controls.gender.errors.required">
+            This Field is Required.
+          </span>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Mobile Number</label>
+            <input formControlName="mobileNo" type="text" class="form-control">
+            <span class="control-alert" *ngIf="(student.controls.mobileNo.touched || submitted)  && student.controls.mobileNo.errors.required">
+              This Field is Required.
+            </span>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Email</label>
+            <input type="text" formControlName="emailId" class="form-control" id="inputPassword4">
+            <span class="control-alert" *ngIf="(student.controls.emailId.touched || submitted)  && student.controls.emailId.errors.required">
+              This Field is Required.
+            </span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label>Date of Birth</label>
+            <input class="form-control" type="date" formControlName="dateOfBirth" />
+            <span class="control-alert" *ngIf="(student.controls.dateOfBirth.touched || submitted)  && student.controls.dateOfBirth.errors.required">
+              This Field is Required.
+            </span>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Course Applied</label>
+            <select id="inputState" formControlName="appliedCourse" class="form-control">
+              <!-- <option>...</option> -->
+              <option *ngFor="let course of courseList" [value]="course">{{course}}</option>
+            </select>
+            <span class="control-alert" *ngIf="(student.controls.appliedCourse.touched || submitted)  && student.controls.appliedCourse.errors.required">
+              This Field is Required.
+            </span>
+          </div>
+          <!-- <div class="form-group col-md-4">
+            <label for="exampleFormControlFile1">Example file input</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+          </div> -->
+        </div>
+
+        <button type="submit" class="btn btn-primary" (click)="addStudent()">Submit</button>
+        <button type="submit" class="btn btn-secondary" (click)="student.reset()">Reset</button>
+
+      </form>
+    </div>
+  </div>
+
+  <div class="card text-white bg-secondary mb-3">
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2 " *ngIf="studentLists.length === 0">Record Not found</h6>
+      <div *ngIf="studentLists.length > 0">
+
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th></th>
+              <th scope="col">S. No</th>
+              <th scope="col">Student's Name</th>
+              <th scope="col">Father's Name</th>
+              <th scope="col">DOB</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Course</th>
+              <th scope="col">Mobile No</th>
+              <th scope="col">Submitted On</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of studentLists;let i=index;" [hidden]="">
+              <th> <input (change)="actionCheck($event.target.checked,student._id)" class="form-check-input" type="checkbox" value="">
+              </th>
+              <th scope="row">{{student.studentId}}</th>
+              <td>{{student.studentName}}</td>
+              <td>{{student.fatherName}}</td>
+              <td>{{student.dateOfBirth}}</td>
+              <td>{{student.gender}}</td>
+              <td>{{student.appliedCourse}}</td>
+              <td>{{student.mobileNo}}</td>
+              <td>{{student.createdate}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-end">
+            <li class="page-item disabled" (click)="pageChange(false)" [ngClass]="{'disable':(skip==0)}">
+              <a class="page-link" >Previous</a>
+            </li>
+            <li class="page-item" (click)="pageChange(true)" [ngClass]="{'disable':(skip == totalPages )}">
+              <a class="page-link" >Next</a>
+            </li>
+          </ul>
+        </nav>
+        <button type="button" class="btn btn-info"
+          [ngClass]="{'disable':(selection.length === 0 || selection.length > 1) }" (click)="modifyDetails()">Edit</button>
+        <button type="button" class="btn btn-info" (click)="deleteAll()" [ngClass]="{'disable':selection.length === 0 }">Delete</button>
+      </div>
+
+    </div>
+  </div>
+</div>
